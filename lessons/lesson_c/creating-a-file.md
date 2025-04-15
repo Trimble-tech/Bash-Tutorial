@@ -45,23 +45,27 @@ ls 'folder2'
 mkdir -p 'folder3' 
 cp -r -v folder1 folder3 && cp -r -v folder2 folder3
 
-#### 04 Ask to remove the folder we created in the above example
+#### 04 Ask to show the disk space used on your system.
 while true; do
-    read -r -p "echo 'Are you ready to begin?' [Y/N] " yn
+    read -r -p "echo 'Do you want to see disk usage?' [Y/N] " yn
         case $yn in
         [Yy]* ) 
-                echo "Deleting the folder now."
-                rm -rf $PWD/folder3
-                echo "Complete"
+                echo "Displaying disk usage:"
+                df -h -l
                 break;;
 
-        [Nn]* ) echo "Keeping folder in place."
+        [Nn]* ) echo "Not showing disk usage."
                 exit;;
 
         * ) echo 'Yes or No?' ;;
     esac
 done
 exit
+
+#### 05 Delete folder3
+***rm -rf is a powerful/dangerous command.***
+***Make sure you are deleting the right folder!***
+rm -rf folder3
 
 **If you need help saving your file, refer to these instructions for terminal editors:**
 **VIM**: *Esc*, then type :wq
